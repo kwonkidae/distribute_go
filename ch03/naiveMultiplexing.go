@@ -1,0 +1,24 @@
+package main
+
+import "fmt"
+
+func main() {
+	channels := [5](chan int){
+		make(chan int),
+		make(chan int),
+		make(chan int),
+		make(chan int),
+		make(chan int),
+	}
+
+	go func() {
+		for _, chX := range channels {
+			fmt.Println("Receiving from", <-chX)
+		}
+	}()
+
+	for i := 0; i < 5; i++ {
+		fmt.Println("Sending on channel:", i)
+		channels[i] <- 1
+	}
+}

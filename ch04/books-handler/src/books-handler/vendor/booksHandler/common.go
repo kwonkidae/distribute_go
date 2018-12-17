@@ -35,5 +35,6 @@ func GetBooks() map[string]bookResource {
 			Link:  fmt.Sprintf("http://link-to-book%s.com", id),
 		}
 	}
+	fmt.Println("add")
 	return books
 }
